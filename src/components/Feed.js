@@ -7,16 +7,10 @@ import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import Post from './Post';
+import posts from './Post.json'
 
 function Feed() {
-    const [posts, setPosts] = useState([]);
-
-    const sendPost = e => {
-        e.preventDefault();
-
-        // push operation from api
-    }
-
+ 
   return (
     <div className='feed'>
         <div className='feed_inputContainer'>
@@ -24,7 +18,7 @@ function Feed() {
                 <CreateIcon />
                 <form>
                     <input type="text"/>
-                    <button onClick={sendPost} type="submit">Send</button>
+                    <button type="submit">Send</button>
                 </form>
             </div>
             <div className='feed_inputOption'>
@@ -35,14 +29,11 @@ function Feed() {
             </div>
         </div>
 
-        {posts.map((post) => (
-            <Post />
-        ))}
-        <Post 
-            name='Mudit Sharma' 
-            description='This is test' 
-            message='Wow it worked'
-        />
+        {posts.map((post) => {
+            return (
+                <Post name={post.name} description={post.description} message={post.message} />
+            )
+            })}
     </div>
   )
 }
